@@ -89,6 +89,38 @@ function SnakeGame() {
         }
     };
 
+    const handleTouchStart = (event) => {
+        const touch = event.touches[0];
+        const startX = touch.pageX;
+        const startY = touch.pageY;
+
+        const handleTouchMove = (moveEvent) => {
+            const moveTouch = moveEvent.touches[0];
+            const deltaX = moveTouch.pageX - startX;
+            const deltaY = moveTouch.pageY - startY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Horizontal swipe
+                if (deltaX > 0) {
+                    setDirection({ x: 1, y: 0 });  // Right swipe
+                } else {
+                    setDirection({ x: -1, y: 0 });  // Left swipe
+                }
+            } else {
+                // Vertical swipe
+                if (deltaY > 0) {
+                    setDirection({ x: 0, y: 1 });  // Down swipe
+                } else {
+                    setDirection({ x: 0, y: -1 });  // Up swipe
+                }
+            }
+
+            window.removeEventListener("touchmove", handleTouchMove);
+        };
+
+        window.addEventListener("touchmove", handleTouchMove);
+    };
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             // Initialize audio objects only on the client side
@@ -105,7 +137,12 @@ function SnakeGame() {
 
     useEffect(() => {
         window.addEventListener("keydown", handleKeyPress);
-        return () => window.removeEventListener("keydown", handleKeyPress);
+        window.addEventListener("touchstart", handleTouchStart);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyPress);
+            window.removeEventListener("touchstart", handleTouchStart);
+        };
     }, [direction]);
 
     return (

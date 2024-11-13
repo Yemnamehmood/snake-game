@@ -27,23 +27,22 @@ body {
 /* Game Container */
 .container {
   text-align: center;
-  width: 100%;
-  max-width: 420px; 
+  width: 90%; /* Makes it responsive on all screens */
+  max-width: 420px; /* Maximum width */
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8); 
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   margin: 0 auto;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  flex-direction: column; 
-  
-  
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .controls {
   margin-top: 10px;
 }
+
 .controls button {
   margin-right: 10px;
   padding: 8px 16px;
@@ -67,16 +66,13 @@ h1 {
 /* Game Board */
 .board {
   position: relative;
-  margin: 0 ;
+  margin: 0;
   background-color: #1d1d1d;
   border: 2px solid #76c7c0;
   border-radius: 8px;
   width: 100%;
   height: 400px;
   max-width: 400px;
-  
-
-  
 }
 
 .snake {
@@ -118,45 +114,49 @@ button:hover {
 /* Media Query for Smaller Screens (Responsive Design) */
 @media (max-width: 600px) {
   .container {
-      width: 100%;
-      padding: 15px;
+    width: 100%;
+    padding: 15px;
   }
 
   .board {
-      width: 300px;
-      height: 300px;
+    width: 100%; /* Full width for smaller screens */
+    height: 300px;
   }
 
   h1 {
-      font-size: 1.5em;
+    font-size: 1.5em;
   }
 
   .score {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   button {
-      padding: 8px 16px;
-      font-size: 0.9em;
+    padding: 8px 16px;
+    font-size: 0.9em;
   }
 }
 
 @media (max-width: 400px) {
+  .container {
+    width: 95%;
+  }
+
   .board {
-      width: 250px;
-      height: 250px;
+    width: 100%; /* Make the game board take full width */
+    height: 250px;
   }
 
   h1 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
 
   .score {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
 
   button {
-      padding: 6px 12px;
-      font-size: 0.8em;
+    padding: 6px 12px;
+    font-size: 0.8em;
   }
 }
