@@ -2,20 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121212;
+  background-image: url('/37716068933bae2f9b11ff90bc91b015.jpg'); 
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Game Container */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 420px; 
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8); 
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  
+  
+}
+
+.controls {
+  margin-top: 10px;
+}
+.controls button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+/* Game Title */
+h1 {
+  font-size: 2em;
+  color: #76c7c0;
+  margin-bottom: 10px;
+}
+
+/* Score Display */
+.score {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #76c7c0;
+}
+
+/* Game Board */
+.board {
+  position: relative;
+  margin: 0 ;
+  background-color: #1d1d1d;
+  border: 2px solid #76c7c0;
+  border-radius: 8px;
+  width: 100%;
+  height: 400px;
+  max-width: 400px;
+  
+
+  
+}
+
+.snake {
+  position: absolute;
+  background-color: #76c7c0;
+  border-radius: 3px;
+}
+
+.food {
+  position: absolute;
+  background-color: #ff6347; 
+  border-radius: 50%;
+}
+
+/* Start Button */
+button {
+  background-color: #76c7c0;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #64b3ac;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #ffffff;
+}
+
+/* Media Query for Smaller Screens (Responsive Design) */
+@media (max-width: 600px) {
+  .container {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .board {
+      width: 300px;
+      height: 300px;
+  }
+
+  h1 {
+      font-size: 1.5em;
+  }
+
+  .score {
+      font-size: 1em;
+  }
+
+  button {
+      padding: 8px 16px;
+      font-size: 0.9em;
+  }
+}
+
+@media (max-width: 400px) {
+  .board {
+      width: 250px;
+      height: 250px;
+  }
+
+  h1 {
+      font-size: 1.2em;
+  }
+
+  .score {
+      font-size: 0.9em;
+  }
+
+  button {
+      padding: 6px 12px;
+      font-size: 0.8em;
+  }
 }
