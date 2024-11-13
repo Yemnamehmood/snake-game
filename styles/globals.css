@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,7 @@
 
 body {
   background-color: #121212;
-  background-image: url('/37716068933bae2f9b11ff90bc91b015.jpg'); 
+  background-image: url('/37716068933bae2f9b11ff90bc91b015.jpg');
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -27,7 +26,7 @@ body {
 /* Game Container */
 .container {
   text-align: center;
-  width: 90%; /* Makes it responsive on all screens */
+  width: 100%; /* Responsive width */
   max-width: 420px; /* Maximum width */
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -39,6 +38,7 @@ body {
   flex-direction: column;
 }
 
+/* Controls */
 .controls {
   margin-top: 10px;
 }
@@ -66,25 +66,34 @@ h1 {
 /* Game Board */
 .board {
   position: relative;
-  margin: 0;
   background-color: #1d1d1d;
   border: 2px solid #76c7c0;
   border-radius: 8px;
-  width: 100%;
-  height: 400px;
-  max-width: 400px;
+  width: 100%; 
+  height: 400px; 
+  max-width: 400px; 
+  display: grid;
+  grid-template-columns: repeat(20, 1fr); 
+  grid-template-rows: repeat(20, 1fr); 
+  margin-top: 20px;
 }
 
+/* Snake */
 .snake {
   position: absolute;
   background-color: #76c7c0;
   border-radius: 3px;
+  width: 20px; 
+  height: 20px; 
 }
 
+/* Food (Tomato) */
 .food {
   position: absolute;
-  background-color: #ff6347; 
+  background-color: #ff6347;
   border-radius: 50%;
+  width: 20px; /* 20px per cell */
+  height: 20px; /* 20px per cell */
 }
 
 /* Start Button */
@@ -111,16 +120,18 @@ button:hover {
   color: #ffffff;
 }
 
-/* Media Query for Smaller Screens (Responsive Design) */
+/* Mobile adjustments */
 @media (max-width: 600px) {
   .container {
-    width: 100%;
     padding: 15px;
+    width: 100%;
+    height: auto;
   }
 
   .board {
-    width: 100%; /* Full width for smaller screens */
-    height: 300px;
+    width: 100%;
+    height: 100%; 
+    max-width: none; 
   }
 
   h1 {
@@ -132,19 +143,15 @@ button:hover {
   }
 
   button {
+    font-size: 1em;
     padding: 8px 16px;
-    font-size: 0.9em;
   }
 }
 
 @media (max-width: 400px) {
-  .container {
-    width: 95%;
-  }
-
   .board {
-    width: 100%; /* Make the game board take full width */
-    height: 250px;
+    width: 100%;
+    height: 100%; 
   }
 
   h1 {
@@ -156,7 +163,7 @@ button:hover {
   }
 
   button {
-    padding: 6px 12px;
     font-size: 0.8em;
+    padding: 6px 12px;
   }
 }

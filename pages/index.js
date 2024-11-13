@@ -36,10 +36,12 @@ function SnakeGame() {
     };
 
     // Generate random position for food
-    const generateFoodPosition = () => ({
-        x: Math.floor(Math.random() * (BOARD_SIZE / CELL_SIZE)),
-        y: Math.floor(Math.random() * (BOARD_SIZE / CELL_SIZE)),
-    });
+    const generateFoodPosition = () => {
+        const x = Math.floor(Math.random() * (BOARD_SIZE / CELL_SIZE));
+        const y = Math.floor(Math.random() * (BOARD_SIZE / CELL_SIZE));
+
+        return { x: x, y: y };
+    };
 
     // Move the snake and check for collisions
     const moveSnake = () => {
@@ -61,8 +63,15 @@ function SnakeGame() {
             newSnake.unshift(head);
             if (head.x === food.x && head.y === food.y) {
                 setScore((prevScore) => prevScore + 1);
-                setFood(generateFoodPosition());
-                if (eatSound) eatSound.play(); // Play the eating sound
+
+                // Ensure food does not overlap with snake body
+                let newFoodPosition;
+                do {
+                    newFoodPosition = generateFoodPosition();
+                } while (newSnake.some(segment => segment.x === newFoodPosition.x && segment.y === newFoodPosition.y));
+
+                setFood(newFoodPosition);
+                if (eatSound) eatSound.play();
             } else {
                 newSnake.pop();
             }
@@ -118,7 +127,7 @@ function SnakeGame() {
             window.removeEventListener("touchmove", handleTouchMove);
         };
 
-        window.addEventListener("touchmove", handleTouchMove);
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
     };
 
     useEffect(() => {
@@ -146,14 +155,15 @@ function SnakeGame() {
     }, [direction]);
 
     return (
-        <div className="container">
-            <h1>Snake Game</h1>
-            <div className="score">Score: {score}</div>
-            <div className="board" style={{ width: BOARD_SIZE, height: BOARD_SIZE }}>
+        <div className="container bg-black bg-opacity-80 rounded-lg p-6 text-center">
+            <h1 className="text-teal-400 text-2xl mb-4">Snake Game</h1>
+            <div className="score text-teal-400 mb-4 text-lg">Score: {score}</div>
+            <div className="board relative bg-gray-800 border-2 border-teal-400 rounded-lg"
+                style={{ width: BOARD_SIZE, height: BOARD_SIZE }}>
                 {snake.map((segment, index) => (
                     <div
                         key={index}
-                        className="snake"
+                        className="snake absolute bg-teal-400 rounded-sm"
                         style={{
                             left: `${segment.x * CELL_SIZE}px`,
                             top: `${segment.y * CELL_SIZE}px`,
@@ -163,7 +173,7 @@ function SnakeGame() {
                     />
                 ))}
                 <div
-                    className="food"
+                    className="food absolute bg-red-500 rounded-full"
                     style={{
                         left: `${food.x * CELL_SIZE}px`,
                         top: `${food.y * CELL_SIZE}px`,
@@ -172,15 +182,21 @@ function SnakeGame() {
                     }}
                 />
             </div>
-            <div className="controls">
+            <div className="controls mt-4">
                 {!isPlaying ? (
-                    <button onClick={startGame}>Start Game</button>
+                    <button onClick={startGame} className="bg-teal-400 text-black py-2 px-4 rounded-md">
+                        Start Game
+                    </button>
                 ) : (
-                    <button onClick={stopGame}>Stop Game</button>
+                    <button onClick={stopGame} className="bg-red-500 text-black py-2 px-4 rounded-md">
+                        Stop Game
+                    </button>
                 )}
-                <button onClick={startGame}>Reset Game</button>
+                <button onClick={startGame} className="bg-teal-400 text-black py-2 px-4 rounded-md ml-2">
+                    Reset Game
+                </button>
             </div>
-            <footer className="footer">© Snake Game by Yemna Mehmood</footer>
+            <footer className="footer text-white text-sm mt-4">© Snake Game by Yemna Mehmood</footer>
         </div>
     );
 }
