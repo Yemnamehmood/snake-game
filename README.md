@@ -1,40 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Snake Game
 
-## Getting Started
+A simple Snake Game built using React and Next.js. The game features basic functionality, including snake movement, food collection, and score tracking. It also plays sound effects when the game starts, when the snake eats food, and when the game is lost.
 
-First, run the development server:
+## Features
+
+- **Snake Movement**: Control the snake using the arrow keys (Up, Down, Left, Right).
+- **Food Collection**: The snake eats food to grow and increase the score.
+- **Audio Effects**: Sound effects are triggered when the game starts, the snake eats food, and the game ends.
+- **Score Tracker**: Tracks and displays the player’s score based on the number of food items eaten.
+- **Responsive Layout**: The game board and interface are styled to work across different screen sizes.
+
+## Installation
+
+### 1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/snake-game.git
+```
+
+### 2. Navigate into the project directory:
+
+```bash
+cd snake-game
+```
+
+### 3. Install dependencies:
+
+```bash
+npm install
+```
+
+### 4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the app on [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Game Controls
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- **Arrow Keys (Up, Down, Left, Right)**: Control the snake's movement.
+- **Start Game Button**: Starts a new game.
+- **Stop Game Button**: Stops the current game.
+- **Reset Game Button**: Resets the game after it’s stopped.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `pages/index.js`: Main game logic and UI.
+- `styles/globals.css`: Global styles for the project.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **React**: Library for building the user interface.
+- **CSS**: Styling for the game board and UI elements.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Audio Files
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `game-start-6104.mp3`: Played when the game starts.
+- `brass-fail-8-a-207130.mp3`: Played when the game ends.
+- `snake-hiss-95241.mp3`: Played when the snake eats food.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
